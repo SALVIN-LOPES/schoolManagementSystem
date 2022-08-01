@@ -1,0 +1,17 @@
+{% extends 'main.html' %} 
+
+{% block content %}
+<div>
+    <h1><a href="{% url 'educator-register' %}">Educator register</a> </h1>
+    <h1><a href="{% url 'user-register' %}">User register</a> </h1>
+
+</div>
+    
+<style>
+    h1 a{
+        color: #fff;
+        text-decoration: none;
+    }
+</style>
+
+{% endblock %}

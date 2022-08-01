@@ -1,0 +1,48 @@
+{% extends 'main.html' %}
+{% load static %}
+
+{% block content %}
+    <!-- <h1>home page</h1> -->
+    <div class="header">
+        <div class="banner">
+            <div class="app-text">
+                <h3>airbnb for yatchting</h3>
+                <h1>Explore Your Knowledge<br>And Skills With Us</h1>
+                <p>Our mission is to help people to find the best online/offline course and learn anytime,anywhere,lets start with us.</p>
+            </div>
+            <div class="app-picture">
+                <img src="{% static 'images/10.jpg' %}">
+            </div>
+        </div>
+   
+        <div class="about-services">
+            <ul>
+                <li>
+                    <img src="{% static 'images/1.png' %}">
+                    <h1>SEO Consultancy</h1>
+                    <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry.</p>
+                </li>
+                <li>
+                    <img src="{% static 'images/2.png' %}">
+                    <h1>Competitor Analysis</h1>
+                    <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry.</p>
+                </li>
+                <li>
+                    <img src="{% static 'images/3.png' %}">
+                    <h1>Social Media Marketing</h1>
+                    <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry.</p>
+                </li>
+            </ul>
+        </div>
+   
+        <div class="social-icons">
+            <ul>
+               <li><a href="#"><i class="fa fa-facebook"></i></a></li>
+               <li><a href="#"><i class="fa fa-twitter"></i></a></li>
+               <li><a href="#"><i class="fa fa-linkedin"></i></a></li>
+               <li><a href="#"><i class="fa fa-instagram"></i></a></li>
+            </ul>
+        </div>
+       </div>
+
+{% endblock content %}

@@ -1,0 +1,32 @@
+{% extends 'main.html' %} {% block content %}
+<div class="center">
+  <h1>{{ role }} Register</h1>
+  <form action="" method="POST">
+    <!-- {% csrf_token %} -->
+    {% csrf_token %}
+    {% for field in form %}
+    <div class="txt_field">
+      <!-- <input type="text" placeholder="{{ field.label }}" value="{{ field }}" required /> -->
+      <label class="">{{ field.label }}</label>
+      {{ field }}
+    </div>
+    {% endfor %}
+    <div class="pass">Forgot Password?</div>
+    <input type="submit" value="Register" />
+    <div class="signup_link">
+        <div class="signup_link">Already Registered? <a href="{% url 'login' %}">Signin</a></div>
+    </div>
+  </form>
+</div>
+
+<style>
+  .options {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  margin-bottom: 2rem;
+}
+
+</style>
+
+{% endblock %}
