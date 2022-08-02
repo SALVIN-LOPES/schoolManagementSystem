@@ -5,7 +5,7 @@
 <h2 style="margin-left:20px;">{% block title %} Profile {% endblock %}</h2>
 
 <!-- profile page new template -->
-{% if user.is_authenticated %}
+{% if user.is_authenticated and student %}
 <div class="mb-3 row" style="margin-left:20px;">
     <label for="staticEmail" class="col-sm-2 col-form-label">Name</label>
     <div class="col-sm-10">
@@ -17,6 +17,68 @@
     <div class="col-sm-10">
       <input type="text" readonly class="form-control-plaintext" id="staticEmail" value="{{ user.email }}">
     </div>
+</div>
+<div class="mb-3 row" style="margin-left:20px;">
+  <label for="staticEmail" class="col-sm-2 col-form-label">standard</label>
+  <div class="col-sm-10">
+    <input type="text" readonly class="form-control-plaintext" id="staticEmail" value="{{ student.standard }}">
+  </div>
+</div>
+<div class="mb-3 row" style="margin-left:20px;">
+  <label for="staticEmail" class="col-sm-2 col-form-label">grade</label>
+  <div class="col-sm-10">
+    <input type="text" readonly class="form-control-plaintext" id="staticEmail" value="{{ student.grade }}">
+  </div>
+</div>
+<div class="mb-3 row" style="margin-left:20px;">
+  <label for="staticEmail" class="col-sm-2 col-form-label">section</label>
+  <div class="col-sm-10">
+    <input type="text" readonly class="form-control-plaintext" id="staticEmail" value="{{ student.section }}">
+  </div>
+</div>
+<div class="mb-3 row" style="margin-left:20px;">
+  <label for="staticEmail" class="col-sm-2 col-form-label">stream</label>
+  <div class="col-sm-10">
+    <input type="text" readonly class="form-control-plaintext" id="staticEmail" value="{{ student.stream }}">
+  </div>
+</div>
+<div class="mb-3 row" style="margin-left:20px;">
+  <label for="staticEmail" class="col-sm-2 col-form-label">roll_no</label>
+  <div class="col-sm-10">
+    <input type="text" readonly class="form-control-plaintext" id="staticEmail" value="{{ student.roll_no }}">
+  </div>
+</div>
+<!-- #educator -->
+{% else %} 
+<div class="mb-3 row" style="margin-left:20px;">
+  <label for="staticEmail" class="col-sm-2 col-form-label">Name</label>
+  <div class="col-sm-10">
+    <input type="text" readonly class="form-control-plaintext" id="staticEmail" value="{{ user.username }}">
+  </div>
+</div>
+<div class="mb-3 row" style="margin-left:20px;">
+  <label for="staticEmail" class="col-sm-2 col-form-label">Email</label>
+  <div class="col-sm-10">
+    <input type="text" readonly class="form-control-plaintext" id="staticEmail" value="{{ user.email }}">
+  </div>
+</div>
+<div class="mb-3 row" style="margin-left:20px;">
+  <label for="staticEmail" class="col-sm-2 col-form-label">phone</label>
+  <div class="col-sm-10">
+    <input type="text" readonly class="form-control-plaintext" id="staticEmail" value="{{ educator.phone }}">
+  </div>
+</div>
+<div class="mb-3 row" style="margin-left:20px;">
+  <label for="staticEmail" class="col-sm-2 col-form-label">subject</label>
+  <div class="col-sm-10">
+    <input type="text" readonly class="form-control-plaintext" id="staticEmail" value="{{ educator.subject }}">
+  </div>
+</div>
+<div class="mb-3 row" style="margin-left:20px;">
+  <label for="staticEmail" class="col-sm-2 col-form-label">classes_taught</label>
+  <div class="col-sm-10">
+    <input type="text" readonly class="form-control-plaintext" id="staticEmail" value="{{ educator.classes_taught }}">
+  </div>
 </div>
 {% if user.is_staff %}
   <div class="mb-3 row" style="margin-left:20px;">
@@ -33,10 +95,6 @@
   </div>
 </div>
 {% endif %}
-
-{% else %}
-
-<h2>first login to view the details</h2>
 
 {% endif %}
 

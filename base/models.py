@@ -1,9 +1,18 @@
 
-
+import os
 from django.db import models
 from django.contrib.auth.base_user import AbstractBaseUser
 from django.core.validators import RegexValidator
 from django.contrib.auth.models import User
+from django.utils.translation import gettext_lazy as _
+
+def path_and_rename(instance, filename):
+    upload_to = "Images/"
+    ext = filename.split('.')[-1]
+    # get filename
+    if instance.user.username:
+        filename = 'User_Profile_Pictures/{}.{}'.format(instance.user.username,ext)
+    return os.path.join(upload_to,filename)
 
 class Student(models.Model):
     user = models.ForeignKey(User,on_delete=models.CASCADE)
@@ -12,6 +21,13 @@ class Student(models.Model):
     section = models.CharField(max_length=100)
     stream = models.CharField(max_length=100)
     roll_no = models.IntegerField()
+    profile_pic = models.ImageField(upload_to = path_and_rename,verbose_name= 'Profile Picture',blank=True )
+    is_staff = models.BooleanField(
+        _("educator"),
+        default=False,
+        help_text=_("Designates whether the user can log into this admin site."),
+    )
+
     updated = models.DateTimeField(auto_now=True)
     created = models.DateTimeField(auto_now_add=True)
 
@@ -32,6 +48,11 @@ class Educator(models.Model):
     classes_taught = models.CharField(max_length=50)
     updated = models.DateTimeField(auto_now=True)
     created = models.DateTimeField(auto_now_add=True)
+    is_staff = models.BooleanField(
+        _("educator"),
+        default=True,
+        help_text=_("Designates whether the user can log into this admin site."),
+    )
     
 
     class Meta:

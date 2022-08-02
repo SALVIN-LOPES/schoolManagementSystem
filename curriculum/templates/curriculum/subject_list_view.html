@@ -1,0 +1,14 @@
+{% extends 'main.html' %}
+
+{% block content %}
+    {% for subject in subjects %}
+        <div class="container">
+            <a href="#">{{subject.name}}</a>
+        </div>
+    {% endfor %}
+    {% if request.user.is_staff %}
+        <a href="#"><h4>Create Lessons</h4></a>
+    {% else %}
+    <a href="#"><h4>view Lessons</h4></a>
+    {% endif %}
+{% endblock %}

@@ -71,8 +71,8 @@ def educatorRegisterPage(request):
             user.save()
 
             edu_form = educator_form.save()
-            # edu_form.user = user
-            # edu_form.save()
+            edu_form.user = user
+            edu_form.save()
             # user = authenticate(request,username=username,password=password)
             login(request,user)
             print("EMAIL = ",user.email)
@@ -117,9 +117,18 @@ def logoutUser(request):
 def profilePage(request):
     page = 'after_login'
     user = request.user
-
-    context = {'page':page,'user':user}
-    return render(request,'base/profilePage.html',context)
+    print('status = ', user.is_staff)
+    print("user = ",user.username)
+    if not user.is_staff:
+        student = Student.objects.filter(user=user).first()
+        print("student = ",student)
+        context = {'page':page,'user':user,'student':student}
+        return render(request,'base/profilePage.html',context)
+    else:
+        educator = Educator.objects.filter(user=user).first()
+        print("educator = ",educator)
+        context = {'page':page,'user':user,'educator':educator}
+        return render(request,'base/profilePage.html',context)
 
 @login_required(login_url='login')
 def home(request):
