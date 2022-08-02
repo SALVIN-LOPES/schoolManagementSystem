@@ -1,0 +1,40 @@
+{% extends 'main.html' %} {% block content %}
+<div class="center">
+  <h1>{{ role }} Register</h1>
+  <form action="" method="POST">
+    <!-- {% csrf_token %} -->
+    {% csrf_token %}
+    
+    <!-- {% for field in user_form %}
+    <div class="txt_field">
+      <label class="">{{ field.label }}</label>
+      {{ field }}
+    </div>
+    {% endfor %}
+    {% for field in student_form %}
+    <div class="txt_field">
+      <label class="">{{ field.label }}</label>
+      {{ field }}
+    </div>
+    {% endfor %} -->
+    {{ user_form }}
+    {{ student_form }}
+    <div class="pass">Forgot Password?</div>
+    <input type="submit" value="Register" />
+    <div class="signup_link">
+        <div class="signup_link">Already Registered? <a href="{% url 'login' %}">Signin</a></div>
+    </div>
+  </form>
+</div>
+
+<style>
+  .options {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  margin-bottom: 2rem;
+}
+
+</style>
+
+{% endblock %}

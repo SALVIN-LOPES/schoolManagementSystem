@@ -4,13 +4,8 @@
   <form action="" method="POST">
     <!-- {% csrf_token %} -->
     {% csrf_token %}
-    {% for field in form %}
-    <div class="txt_field">
-      <!-- <input type="text" placeholder="{{ field.label }}" value="{{ field }}" required /> -->
-      <label class="">{{ field.label }}</label>
-      {{ field }}
-    </div>
-    {% endfor %}
+    {{ user_form }}
+    {{ educator_form }}
     <div class="pass">Forgot Password?</div>
     <input type="submit" value="Register" />
     <div class="signup_link">
@@ -30,3 +25,6 @@
 </style>
 
 {% endblock %}
+
+
+
