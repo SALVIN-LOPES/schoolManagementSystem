@@ -14,12 +14,14 @@ from django.db.models import Q
 # from .forms import UserForm
 from django.contrib.auth.forms import UserCreationForm 
 
+# routing to default register page
 def defaultRegister(request):
     page = 'before_login'
 
     context = {'page':page}
     return render(request,'base/defaultRegister.html',context)
 
+# routing to userRegisterPage
 def userRegisterPage(request):
     if request.user.is_authenticated:
         return redirect('home')
@@ -52,6 +54,7 @@ def userRegisterPage(request):
     context  ={'user_form':user_form,'student_form':student_form,'page':page,'role':role}
     return render(request,'base/UserRegisterPage.html',context)
 
+#routing to educatorRegisterPage
 def educatorRegisterPage(request):
     if request.user.is_authenticated:
         return redirect('home')
@@ -85,7 +88,7 @@ def educatorRegisterPage(request):
     return render(request,'base/EducatorRegisterPage.html',context)
 
 
-
+# creating logion page and saving the user
 def loginPage(request):
     page = 'before_login'
     if request.user.is_authenticated:
@@ -109,10 +112,12 @@ def loginPage(request):
     context = {'page': page}
     return render(request,'base/loginPage.html',context)
 
+# creating logout logic
 def logoutUser(request):
     logout(request)
     return redirect('login')
 
+# to access profile page user needs to login first and redirecting to profile page
 @login_required(login_url='login')
 def profilePage(request):
     page = 'after_login'
@@ -130,6 +135,7 @@ def profilePage(request):
         context = {'page':page,'user':user,'educator':educator}
         return render(request,'base/profilePage.html',context)
 
+# to access home page user needs to login first and redirecting to home page
 @login_required(login_url='login')
 def home(request):
     page = 'after_login'

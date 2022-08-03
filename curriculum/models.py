@@ -39,6 +39,7 @@ class Standard(models.Model):
     def __str__(self):
         return self.name
 
+#creating the Subject model
 class Subject(models.Model):
     subject_id = models.CharField(unique=True,max_length=100)
     name = models.CharField(max_length=100)
@@ -54,6 +55,7 @@ class Subject(models.Model):
     def __str__(self):
         return self.name
 
+#creating the Lesson model
 class Lesson(models.Model):
     lesson_id = models.CharField(max_length=100,unique=True)
     standard = models.ForeignKey(Standard, on_delete=models.CASCADE)

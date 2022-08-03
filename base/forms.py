@@ -3,6 +3,7 @@ from django.contrib.auth.forms import UserCreationForm
 # from django.contrib.auth.models import User
 from .models import *
 
+# default usercreationform by django
 class UserForm(UserCreationForm):
     email = forms.EmailField()
 
@@ -14,6 +15,7 @@ class UserForm(UserCreationForm):
             'password2':'confirm Password'
         }
 
+#student form to save the student and additional details
 class StudentForm(forms.ModelForm):
     standard = forms.CharField(max_length=10)
     grade = forms.CharField(max_length=10)
@@ -28,6 +30,7 @@ class StudentForm(forms.ModelForm):
         
         )
 
+#educator form to save the educator and additional details
 class EducatorForm(forms.ModelForm):
     subject = forms.CharField(max_length=100)
     classes_taught = forms.CharField(max_length=100)

@@ -14,6 +14,7 @@ def path_and_rename(instance, filename):
         filename = 'User_Profile_Pictures/{}.{}'.format(instance.user.username,ext)
     return os.path.join(upload_to,filename)
 
+# student model to save the additional details of student in db
 class Student(models.Model):
     user = models.ForeignKey(User,on_delete=models.CASCADE)
     standard = models.CharField(max_length=100)
@@ -37,6 +38,7 @@ class Student(models.Model):
     def __str__(self):
         return self.user.username
 
+# educator model to save the additional details of educator in db
 class Educator(models.Model):
 
     user = models.ForeignKey(User,on_delete=models.CASCADE)

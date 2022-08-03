@@ -7,7 +7,7 @@ from django.contrib.auth.decorators import login_required
 def hello(request):
     return HttpResponse('hello world!!')
 
-
+# get all the standards of the school
 def StandardListView(request):
 
     if request.user.is_authenticated:
@@ -22,6 +22,7 @@ def StandardListView(request):
         return render(request,'curriculum/standard_list_view.html',context)
     return HttpResponse("you are not logged in login first!!")
 
+# get all the subjects in particular standard 
 def SubjectListView(request,pk):
     if request.user.is_authenticated:
         page = 'after_login'
